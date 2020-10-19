@@ -6,9 +6,8 @@ info = audioinfo("acoustic.wav");
 [y,Fs] = audioread("acoustic.wav"); % input archivo .wav
 largo = size(y);
 
-
-
 n=input('Numero de ecos ');
+
 for i=1:n
 msge = sprintf('Ingresar retardo eco numero %d    :',i)
 retardos(i)=input(msge);
@@ -19,12 +18,16 @@ plot(y)
 ylabel("Amplitud");
 title("Señal original");
 
+
 for i=1:n
     subplot(2,2,i+1)
     plot(echo_gen(y,Fs,retardos(i),a));
     ylabel("Amplitud");
     title("Señal eco");
 end
+
+
+
 
 
 function output = echo_gen(input, fs, delay, amp)
